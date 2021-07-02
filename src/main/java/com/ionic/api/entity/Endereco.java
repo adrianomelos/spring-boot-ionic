@@ -19,16 +19,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_cidade")
-public class Cidade implements Serializable {
+@Table(name = "tb_endereco")
+public class Endereco implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
+	private String logradouro;
+	private String numero;
+	private String complemento;
+	private String bairro;
+	private String cep;
 	
 	@ManyToOne
-	private Estado estado;
-
+	private Cliente cliente;
+	
+	@ManyToOne
+	private Cidade cidade;
+	
 }

@@ -1,6 +1,7 @@
 package com.ionic.api.resouces.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,10 @@ public class CategoriaService {
 	
 	public List<Categoria> findAll(){
 		return catergoriaRepository.findAll();
+	}
+
+	public Optional<Categoria> findById(Long id) {
+		return catergoriaRepository.findById(id);
 	}
 
 }

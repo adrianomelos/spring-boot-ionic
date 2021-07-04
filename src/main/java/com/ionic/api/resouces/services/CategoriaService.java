@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ionic.api.entity.Categoria;
-import com.ionic.api.resouces.repositorys.CategoriaRepository;
+import com.ionic.api.repositorys.CategoriaRepository;
 
 @Service
 public class CategoriaService {

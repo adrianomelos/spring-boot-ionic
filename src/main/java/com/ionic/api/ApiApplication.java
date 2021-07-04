@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ionic.api.entity.Categoria;
 import com.ionic.api.entity.Produto;
-import com.ionic.api.resouces.repositorys.CategoriaRepository;
-import com.ionic.api.resouces.repositorys.ProdutoRepository;
+import com.ionic.api.repositorys.CategoriaRepository;
+import com.ionic.api.repositorys.ProdutoRepository;
 
 @SpringBootApplication
 public class ApiApplication implements CommandLineRunner {

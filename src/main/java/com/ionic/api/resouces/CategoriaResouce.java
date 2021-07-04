@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ionic.api.entity.Categoria;
-import com.ionic.api.resouces.services.CategoriaService;
+import com.ionic.api.services.CategoriaService;
 
 @RestController
 @RequestMapping(value = "/categorias")

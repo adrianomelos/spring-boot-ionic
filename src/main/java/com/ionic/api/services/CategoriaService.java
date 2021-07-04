@@ -1,4 +1,4 @@
-package com.ionic.api.resouces.services;
+package com.ionic.api.services;
 
 import java.util.List;
 import java.util.Optional;

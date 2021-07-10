@@ -29,6 +29,8 @@ public class Estado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	private String sigla;
+	private Long idIbge;
 	
 	@OneToMany
 	private List<Cidade> cidades = new ArrayList<>();

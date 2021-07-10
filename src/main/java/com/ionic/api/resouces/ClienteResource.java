@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,4 +30,10 @@ public class ClienteResource {
 	public Optional<Cliente> findById(@PathVariable Long id) {
 		return categoriaSevice.findById(id);
 	}
+	
+	@PostMapping
+	public Cliente save(@RequestBody Cliente cliente ) {
+		return categoriaSevice.save(cliente);
+	}
+
 }

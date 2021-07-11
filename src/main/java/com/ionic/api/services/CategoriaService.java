@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ionic.api.dto.CategoriaDto;
 import com.ionic.api.entity.Categoria;
 import com.ionic.api.repositorys.CategoriaRepository;
 
@@ -21,6 +22,11 @@ public class CategoriaService {
 
 	public Optional<Categoria> findById(Long id) {
 		return catergoriaRepository.findById(id);
+	}
+
+	public Categoria save(CategoriaDto dto) {	
+		Categoria c = new Categoria(null, dto.getCategoria(), null);	
+		return catergoriaRepository.save(c);
 	}
 
 }

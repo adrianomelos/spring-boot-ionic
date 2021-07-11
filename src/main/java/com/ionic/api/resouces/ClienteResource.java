@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ionic.api.entity.Cliente;
+import com.ionic.api.repositorys.EnderecoRepository;
 import com.ionic.api.services.ClienteService;
 
 @RestController
@@ -20,6 +21,9 @@ public class ClienteResource {
 
 	@Autowired
 	private ClienteService categoriaSevice;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 
 	@GetMapping
 	public List<Cliente> findAll() {
@@ -32,8 +36,12 @@ public class ClienteResource {
 	}
 	
 	@PostMapping
-	public Cliente save(@RequestBody Cliente cliente ) {
-		return categoriaSevice.save(cliente);
+	public Cliente save(@RequestBody Cliente cl ) {
+		Cliente c = new Cliente(null, cl.getNome(),cl.getEmail(),cl.getCpfOuCnpj(),cl.getTipo(),null,cl.getTelefones());
+		
+		c.setEnderecos(cl.getEnderecos());
+		enderecoRepository.saveAll(c.getEnderecos());
+		return categoriaSevice.save(c);
 	}
 
 }

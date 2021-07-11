@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,8 +32,10 @@ public class Estado implements Serializable {
 	private Long id;
 	private String nome;
 	private String sigla;
+	@JsonIgnore
 	private Long idIbge;
 	
+	@JsonIgnore
 	@OneToMany
 	private List<Cidade> cidades = new ArrayList<>();
 

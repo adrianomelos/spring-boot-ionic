@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.ionic.api.dto.CategoriaDto;
 import com.ionic.api.entity.Categoria;
+import com.ionic.api.exceptions.DatabaseException;
+import com.ionic.api.exceptions.ResourceNotFoundException;
 import com.ionic.api.repositorys.CategoriaRepository;
 
 @Service
@@ -29,4 +32,13 @@ public class CategoriaService {
 		return catergoriaRepository.save(c);
 	}
 
+	public void delete(Long id) {
+		try {
+			catergoriaRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		} catch (Exception e) {
+			throw new DatabaseException("");
+		}
+	}
 }

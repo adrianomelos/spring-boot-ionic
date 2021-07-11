@@ -21,7 +21,7 @@ public class ClienteResource {
 
 	@Autowired
 	private ClienteService categoriaSevice;
-	
+
 	@Autowired
 	private EnderecoRepository enderecoRepository;
 
@@ -29,16 +29,17 @@ public class ClienteResource {
 	public List<Cliente> findAll() {
 		return categoriaSevice.findAll();
 	}
-	
+
 	@GetMapping(value = "/{id}")
 	public Optional<Cliente> findById(@PathVariable Long id) {
 		return categoriaSevice.findById(id);
 	}
-	
+
 	@PostMapping
-	public Cliente save(@RequestBody Cliente cl ) {
-		Cliente c = new Cliente(null, cl.getNome(),cl.getEmail(),cl.getCpfOuCnpj(),cl.getTipo(),null,cl.getTelefones());
-		
+	public Cliente save(@RequestBody Cliente cl) {
+		Cliente c = new Cliente(null, cl.getNome(), cl.getEmail(), cl.getCpfOuCnpj(), cl.getTipo(), null,
+				cl.getTelefones(), null);
+
 		c.setEnderecos(cl.getEnderecos());
 		enderecoRepository.saveAll(c.getEnderecos());
 		return categoriaSevice.save(c);

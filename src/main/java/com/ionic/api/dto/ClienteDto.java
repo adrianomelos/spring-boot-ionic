@@ -27,6 +27,7 @@ public class ClienteDto {
 	private String cep;
 	private Long cidadeId;
 	
+	@Builder.Default
 	private Set<String> telefones = new HashSet<>();
 
 }

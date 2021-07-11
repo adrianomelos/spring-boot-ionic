@@ -35,6 +35,7 @@ public class Estado implements Serializable {
 	@JsonIgnore
 	private Long idIbge;
 	
+	@Builder.Default
 	@JsonIgnore
 	@OneToMany
 	private List<Cidade> cidades = new ArrayList<>();

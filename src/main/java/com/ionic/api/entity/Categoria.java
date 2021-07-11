@@ -33,6 +33,7 @@ public class Categoria implements Serializable {
 	private Long id;
 	private String categoria;
 	
+	@Builder.Default
 	@JsonIgnore
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();

@@ -39,13 +39,16 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private TipoCliente tipo;
 	
+	@Builder.Default
 	@OneToMany
 	private List<Endereco> enderecos = new ArrayList<>();
 	
+	@Builder.Default
 	@ElementCollection
 	@CollectionTable(name = "tb_telefone")
 	private Set<String> telefones = new HashSet<>();
 	
+	@Builder.Default
 	@OneToMany
 	private List<Pedido> pedidos = new ArrayList<>();
 

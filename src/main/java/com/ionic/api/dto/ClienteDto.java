@@ -3,7 +3,7 @@ package com.ionic.api.dto;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.ionic.api.entity.TipoCliente;
+import com.ionic.api.enuns.TipoCliente;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

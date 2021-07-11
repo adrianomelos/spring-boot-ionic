@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Entity;
 
+import com.ionic.api.enuns.StatusPagamento;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,10 +17,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 public class PagamentoComBoleto extends Pagamento {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private LocalDate dataVencimento;
 	private LocalDate dataPagamento;
@@ -29,5 +27,4 @@ public class PagamentoComBoleto extends Pagamento {
 		this.dataVencimento = dataVencimento;
 		
 	}
-
 }

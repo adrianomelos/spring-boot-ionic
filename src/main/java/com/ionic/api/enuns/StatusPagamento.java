@@ -1,4 +1,4 @@
-package com.ionic.api.entity;
+package com.ionic.api.enuns;
 
 public enum StatusPagamento {
 

@@ -10,46 +10,41 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ionic.api.entity.Produto;
-import com.ionic.api.services.ProdutoService;
+import com.ionic.api.entity.Pagamento;
+import com.ionic.api.services.PagamentoService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/produtos")
-public class ProdutoResouce {
-	
+@RequestMapping(value = "/pagamentos")
+public class PagamentoResouce {
+
 	@Autowired
-	private ProdutoService produtoSevice;
+	private PagamentoService pagamentoSevice;
 
 	@GetMapping
-	public List<Produto> findAll() {
-		return produtoSevice.findAll();
+	public List<Pagamento> findAll() {
+		return pagamentoSevice.findAll();
 	}
-	
+
 	@GetMapping(value = "/{id}")
-	public Optional<Produto> findById(@PathVariable Long id) {
-		return produtoSevice.findById(id);
+	public Optional<Pagamento> findById(@PathVariable Long id) {
+		return pagamentoSevice.findById(id);
 	}
-	
+
 	@PostMapping
-	public Produto save(@RequestBody Produto produto) {
-		return produtoSevice.save(produto);
-	} 
-	
+	public Pagamento save(@RequestBody Pagamento pagamento) {
+		return pagamentoSevice.save(pagamento);
+	}
+
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		produtoSevice.delete(id);
+		pagamentoSevice.delete(id);
 	}
-	
-	@PutMapping(value = "/{id}")
-	public Produto update(@PathVariable Long id, @RequestBody Produto produto) {
-		return produtoSevice.update(id, produto);
-	}
+
 }

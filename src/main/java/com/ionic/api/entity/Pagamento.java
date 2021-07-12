@@ -4,10 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_pagamento")
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pagamento implements Serializable {
+public  class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -32,7 +28,6 @@ public abstract class Pagamento implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "pedido_id")
-	@MapsId
 	private Pedido pedido;
 
 }

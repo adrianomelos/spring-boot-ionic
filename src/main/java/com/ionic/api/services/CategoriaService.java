@@ -3,6 +3,8 @@ package com.ionic.api.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,7 @@ public class CategoriaService {
 		return catergoriaRepository.findById(id);
 	}
 
-	public Categoria save(CategoriaDto dto) {	
+	public Categoria save(@Valid CategoriaDto dto) {	
 		Categoria c = new Categoria(null, dto.getCategoria(), null);	
 		return catergoriaRepository.save(c);
 	}
@@ -40,5 +42,11 @@ public class CategoriaService {
 		} catch (Exception e) {
 			throw new DatabaseException("");
 		}
+	}
+
+	public Categoria update(Long id, Categoria categoria) {
+		Optional<Categoria> obj =  catergoriaRepository.findById(id);
+		obj.get().setCategoria(categoria.getCategoria());
+		return catergoriaRepository.save(obj.get());
 	}
 }

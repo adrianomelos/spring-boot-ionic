@@ -34,7 +34,6 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 	
-	@JsonBackReference
 	@ManyToOne
 	private Cliente cliente;
 	

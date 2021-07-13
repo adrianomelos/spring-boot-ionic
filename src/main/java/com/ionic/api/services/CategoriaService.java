@@ -7,6 +7,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ionic.api.dto.CategoriaDto;
@@ -14,6 +16,7 @@ import com.ionic.api.entity.Categoria;
 import com.ionic.api.exceptions.DatabaseException;
 import com.ionic.api.exceptions.ResourceNotFoundException;
 import com.ionic.api.repositorys.CategoriaRepository;
+
 
 @Service
 public class CategoriaService {
@@ -48,5 +51,9 @@ public class CategoriaService {
 		Optional<Categoria> obj =  catergoriaRepository.findById(id);
 		obj.get().setCategoria(categoria.getCategoria());
 		return catergoriaRepository.save(obj.get());
+	}
+	
+	public Page<Categoria> findPage(Pageable paginacao){
+		return catergoriaRepository.findAll(paginacao);
 	}
 }

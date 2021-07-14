@@ -3,10 +3,12 @@ package com.ionic.api.resouces;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,7 @@ public class CategoriaResouce {
 	}
 
 	@PostMapping
-	public Categoria save(@RequestBody CategoriaDto dto) {
+	public Categoria save(@Valid @RequestBody CategoriaDto dto) {
 		return categoriaSevice.save(dto);
 	}
 
@@ -52,7 +54,7 @@ public class CategoriaResouce {
 	}
 
 	@PutMapping(value = "/{id}")
-	public Categoria update(@PathVariable Long id, @RequestBody Categoria categoria) {
+	public Categoria update(@PathVariable Long id, @Valid @RequestBody Categoria categoria) {
 		return categoriaSevice.update(id, categoria);
 	}
 
@@ -62,7 +64,7 @@ public class CategoriaResouce {
 			@RequestParam(value = "orderBy", defaultValue = "categoria") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 
-		PageRequest paginacao = PageRequest.of(page, qtd, Sort.by(orderBy).ascending());
+		PageRequest paginacao = PageRequest.of(page, qtd, Direction.valueOf(direction), orderBy);
 		return categoriaSevice.findPage(paginacao);
 	}
 

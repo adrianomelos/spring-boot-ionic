@@ -20,6 +20,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ionic.api.enuns.TipoCliente;
 
 import lombok.AllArgsConstructor;
@@ -49,6 +50,9 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String cpfOuCnpj;
 	private TipoCliente tipo;
+	
+	@JsonIgnore
+	private String senha;
 	
 	@Builder.Default
 	@OneToMany

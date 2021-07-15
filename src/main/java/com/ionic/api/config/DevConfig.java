@@ -1,14 +1,14 @@
 package com.ionic.api.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.ionic.api.services.CidadeService;
 import com.ionic.api.services.EstadoService;
 
-@Configurable
+@Configuration
 @Profile("dev")
 public class DevConfig {
 	

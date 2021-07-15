@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ionic.api.entity.Cliente;
@@ -20,6 +21,9 @@ public class ClienteService {
 	private ClienteRepository clienteRepository;
 	
 	@Autowired
+	private BCryptPasswordEncoder pe;
+	
+	@Autowired
 	private EnderecoRepository enderecoRepository;
 	
 	public List<Cliente> findAll(){
@@ -31,7 +35,7 @@ public class ClienteService {
 	}
 
 	public Cliente save(Cliente cl) {
-		Cliente c = new Cliente(null, cl.getNome(), cl.getEmail(), cl.getCpfOuCnpj(), cl.getTipo(), null,
+		Cliente c = new Cliente(null, cl.getNome(), cl.getEmail(), cl.getCpfOuCnpj(), cl.getTipo(), pe.encode(cl.getSenha()) , null,
 				cl.getTelefones(), null);
 
 		c.setEnderecos(cl.getEnderecos());
@@ -48,5 +52,4 @@ public class ClienteService {
 			throw new DatabaseException("");
 		}
 	}
-
 }

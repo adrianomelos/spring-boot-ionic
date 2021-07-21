@@ -26,6 +26,8 @@ import com.ionic.api.dto.CategoriaDto;
 import com.ionic.api.entity.Categoria;
 import com.ionic.api.services.CategoriaService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResouce {
@@ -33,11 +35,13 @@ public class CategoriaResouce {
 	@Autowired
 	private CategoriaService categoriaSevice;
 
+	@ApiOperation(value="Retorna uma lista de categorias")
 	@GetMapping
 	public List<Categoria> findAll() {
 		return categoriaSevice.findAll();
 	}
 
+	@ApiOperation(value="Busca por ID")
 	@GetMapping(value = "/{id}")
 	public Optional<Categoria> findById(@PathVariable Long id) {
 		return categoriaSevice.findById(id);

@@ -15,6 +15,6 @@ public class CategoriaDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String categoria;
+	private String nome;
 
 }

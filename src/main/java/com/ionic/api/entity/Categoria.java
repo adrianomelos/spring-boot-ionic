@@ -37,7 +37,7 @@ public class Categoria implements Serializable {
 
 	@NotBlank
 	@Length(min = 5, max = 80)
-	private String categoria;
+	private String nome;
 
 	@Builder.Default
 	@JsonIgnore

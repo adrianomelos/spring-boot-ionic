@@ -33,7 +33,7 @@ public class CategoriaService {
 	}
 
 	public Categoria save(@Valid CategoriaDto dto) {	
-		Categoria c = new Categoria(null, dto.getCategoria(), null);	
+		Categoria c = new Categoria(null, dto.getNome(), null);	
 		return catergoriaRepository.save(c);
 	}
 
@@ -49,7 +49,7 @@ public class CategoriaService {
 
 	public Categoria update(Long id, Categoria categoria) {
 		Optional<Categoria> obj =  catergoriaRepository.findById(id);
-		obj.get().setCategoria(categoria.getCategoria());
+		obj.get().setNome(categoria.getNome());
 		return catergoriaRepository.save(obj.get());
 	}
 	

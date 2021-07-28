@@ -15,6 +15,8 @@ import com.ionic.api.entity.Cidade;
 import com.ionic.api.entity.Cliente;
 import com.ionic.api.entity.Endereco;
 import com.ionic.api.entity.Estado;
+import com.ionic.api.entity.PrivacyPolicy;
+import com.ionic.api.entity.TermsUse;
 import com.ionic.api.enuns.Perfil;
 import com.ionic.api.enuns.TipoCliente;
 import com.ionic.api.repositorys.CategoriaRepository;
@@ -22,6 +24,8 @@ import com.ionic.api.repositorys.CidadeRepository;
 import com.ionic.api.repositorys.ClienteRepository;
 import com.ionic.api.repositorys.EnderecoRepository;
 import com.ionic.api.repositorys.EstadoRepository;
+import com.ionic.api.repositorys.PrivacyPolicyRepository;
+import com.ionic.api.repositorys.TermsUseRepository;
 
 @Service
 public class DBService {
@@ -36,11 +40,22 @@ public class DBService {
 	private CidadeRepository cidadeRepository;
 	@Autowired
 	private CategoriaRepository categoriaRepository;
+	@Autowired
+	private TermsUseRepository termsUseRepository;
+	@Autowired
+	private PrivacyPolicyRepository privacyPolicyRepository; 
 
 	@Autowired
 	private BCryptPasswordEncoder pe;
 
 	public void start() {
+		
+		String texto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+		
+		PrivacyPolicy privacidade = new PrivacyPolicy(null, texto);
+		privacyPolicyRepository.save(privacidade);
+		TermsUse termos = new TermsUse(null, texto);
+		termsUseRepository.save(termos);
 		
 		Categoria cat1 = new Categoria(null, "Informática", null);
 		Categoria cat2 = new Categoria(null, "Escritório", null);

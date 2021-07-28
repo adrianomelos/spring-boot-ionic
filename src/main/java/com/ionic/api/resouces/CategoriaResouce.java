@@ -62,14 +62,14 @@ public class CategoriaResouce {
 
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@PutMapping(value = "/{id}")
-	public Categoria update(@PathVariable Long id, @Valid @RequestBody Categoria categoria) {
+	public Categoria update(@PathVariable Long id, @RequestBody Categoria categoria) {
 		return categoriaSevice.update(id, categoria);
 	}
 
 	@GetMapping(value = "/page")
 	public Page<Categoria> pagefindAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "qtd", defaultValue = "24") Integer qtd,
-			@RequestParam(value = "orderBy", defaultValue = "categoria") String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "nome") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction) {
 
 		PageRequest paginacao = PageRequest.of(page, qtd, Direction.valueOf(direction), orderBy);

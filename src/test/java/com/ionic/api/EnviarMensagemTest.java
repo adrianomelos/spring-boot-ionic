@@ -2,24 +2,23 @@ package com.ionic.api;
 
 import java.time.LocalDateTime;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.MockitoAnnotations;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.ionic.api.entity.Contact;
 import com.ionic.api.services.ContactService;
 
-@ExtendWith(SpringExtension.class)
+@RunWith(SpringJUnit4ClassRunner.class)  
 @SpringBootTest
+@ActiveProfiles(profiles = "test")
 public class EnviarMensagemTest {
 	
 	@Autowired
     private ContactService contactService;
-	
 	
 	@Test
 	void testCadastrarMensagem() {
@@ -29,5 +28,4 @@ public class EnviarMensagemTest {
 		System.out.println(b.getEmail());
 		
 	}
-
 }
